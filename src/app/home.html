@@ -1,0 +1,51 @@
+<div class="container container-fluid">
+  <div class="page-header">
+    Simple Blog Application
+  </div>
+
+  <div ng-repeat="post in vm.posts | orderBy: 'upvotes'">
+
+    <span style="cursor: pointer" 
+          ng-click="vm.incrUpvotes(post)" class="glyphicon glyphicon-thumbs-up"></span>
+
+    <a href="post/:post.id" ui-sref="post(
+                  {id: post.id}
+                )">
+      {{post.title}}
+    </a>
+
+    - upvotes: {{post.upvotes}}
+
+  </div>
+
+
+  </br>
+
+
+  <form ng-submit="vm.addPost()">
+
+    <h3>Add new post</h3>
+
+    <div class="form-group">
+
+      <input type="text" 
+             placeholder="Title" 
+             ng-model="vm.title"
+             class="form-control" />
+
+    </div>
+
+    <div class="form-group">
+
+      <input type="text" 
+             placeholder="Body" 
+             ng-model="vm.body"
+             class="form-control" />
+
+    </div>
+
+    <button type="submit" class="btn btn-primery">Add post</button>
+    
+  </form>
+  
+</div>

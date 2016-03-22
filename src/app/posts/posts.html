@@ -1,0 +1,41 @@
+<div class="container container-fluid">
+  
+  
+  <h3 class="page-header"><span class="glyphicon glyphicon-thumbs-up"
+          ng-click="incrUpvotes(post)"></span>{{vm.post.upvotes}} {{vm.post.title}}</h3>
+
+  <h4>{{vm.post.body}}</h4>
+
+  <hr />
+
+  <h4>Comments:</h4>
+
+  <hr />
+
+  <div class="comments" 
+       ng-repeat="comment in vm.post.comments | orderBy: '-upvotes'">
+
+    <span class="glyphicon glyphicon-thumbs-up"
+          ng-click="incrUpvotes(comment)"></span>
+
+    {{comment.upvotes}} - by {{comment.author}}
+
+    <h5>{{comment.body}}</h5>
+
+  </div>
+
+  <form ng-submit="vm.addComment()"
+        style="margin-top:30px;">
+
+    <h4>Add a new comment</h4>
+    <div class="form-group">
+      <input type="text"
+             class="form-control"
+             placeholder="Comment"
+             ng-model="vm.body"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+
+  </form>
+
+</div>
